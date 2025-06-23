@@ -27,11 +27,11 @@ export default function Productivity() {
           <Card className="p-6 bg-white border-2 border-gray-200 rounded-3xl">
             <CardContent className="p-0">
               {/* Mock UI for User List Menu */}
-              <div className="mb-6">
+              <div className="mb-6 w-full aspect-square rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img
                   src="https://framerusercontent.com/images/jJ74tYvFz8uCvLrQT3gH6Lkm5G8.png"
                   alt="Project management interface showing task lists, progress bars, and team collaboration tools"
-                  className="w-full h-48 object-cover rounded-2xl"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
 
@@ -51,11 +51,11 @@ export default function Productivity() {
           <Card className="p-6 bg-white border-2 border-gray-200 rounded-3xl">
             <CardContent className="p-0">
               {/* Mock UI for Live Collaboration */}
-              <div className="mb-6">
+              <div className="mb-6 w-full aspect-square rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img
                   src="https://framerusercontent.com/images/IYIJmUicy668ZHCB8Ot6T3ytcU.png"
                   alt="Live collaboration interface showing real-time updates and team communications"
-                  className="w-full h-48 object-cover rounded-2xl"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
 
@@ -74,11 +74,11 @@ export default function Productivity() {
           <Card className="p-6 bg-white border-2 border-gray-200 rounded-3xl">
             <CardContent className="p-0">
               {/* Mock UI for Performance Dashboard */}
-              <div className="mb-6">
+              <div className="mb-6 w-full aspect-square rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img
                   src="https://framerusercontent.com/images/fWtVyxIqdx14eVmo7xyCGQpb4os.png"
                   alt="Performance analytics dashboard with charts, metrics, and data visualization"
-                  className="w-full h-48 object-cover rounded-2xl"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
 

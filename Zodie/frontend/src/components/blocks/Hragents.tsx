@@ -58,7 +58,7 @@ const HRAgentsDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-white p-8 rounded-3xl">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent mb-2">

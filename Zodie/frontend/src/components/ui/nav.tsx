@@ -11,6 +11,7 @@ import solutions from '@/images/Solutions.png'
 import agents from '@/images/Agents.png'
 import resource from '@/images/resources.jpg'
 import about from '@/images/about.jpg'
+
 const menuItems = [
   {
     name: "Platform",
@@ -73,7 +74,7 @@ const menuItems = [
     megaMenu: {
       title: "About Us",
       description: "Learn more about our company and mission",
-      image:about,
+      image: about,
       items: [
         { name: "About", href: "/about" },
       ],
@@ -104,75 +105,105 @@ export default function Navbar() {
     <nav
       data-state={menuState && "active"}
       className={cn(
-        "group fixed z-50 w-full border-b transition-colors duration-150 bg-white",
-        scrolled && "bg-white md:bg-background/50 backdrop-blur-3xl",
+        "group fixed z-50 w-full transition-all duration-300",
+        scrolled 
+          ? "bg-white/80 backdrop-blur-lg shadow-lg" 
+          : "bg-gradient-to-r from-orange-50/90 via-white/90 to-blue-50/90 backdrop-blur-md"
       )}
       onMouseLeave={() => setActiveItem(null)}
     >
-      <div className="mx-auto max-w-5xl px-6 transition-all duration-300">
-        <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
-          <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative flex h-16 sm:h-20 items-center justify-between">
+          <div className="flex items-center">
             <Link to="/" aria-label="home" className="flex items-center space-x-2">
-              <img src={Logo} className="h-8 md:h-12"></img>
+              <img src={Logo} alt="Logo" className="h-8 md:h-12 transition-transform duration-200 hover:scale-105" />
             </Link>
+          </div>
 
-            <button
-              onClick={() => setMenuState(!menuState)}
-              aria-label={menuState == true ? "Close Menu" : "Open Menu"}
-              className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMenuState(!menuState)}
+            className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500"
+          >
+            <span className="sr-only">{menuState ? "Close menu" : "Open menu"}</span>
+            {menuState ? (
+              <X className="block h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Menu className="block h-6 w-6" aria-hidden="true" />
+            )}
+          </button>
+
+          {/* Desktop menu */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+            <ul className="flex space-x-8">
+              {menuItems.map((item, index) => (
+                <li key={index}>
+                  <MenuItem setActive={setActiveItem} active={activeItem} item={item.name}>
+                    {item.megaMenu && (
+                      <MegaMenu
+                        title={item.megaMenu.title}
+                        description={item.megaMenu.description}
+                        image={item.megaMenu.image}
+                        items={item.megaMenu.items}
+                      />
+                    )}
+                  </MenuItem>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Auth buttons */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-4">
+            <Button 
+              asChild 
+              variant="ghost" 
+              size="sm"
+              className="font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-100/80"
             >
-              <Menu className="group-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-              <X className="group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
-            </button>
-
-            <div className="hidden lg:block">
-              <ul className="flex gap-8 text-sm">
-                {menuItems.map((item, index) => (
-                  <li key={index}>
-                    <MenuItem setActive={setActiveItem} active={activeItem} item={item.name}>
-                      {item.megaMenu && (
-                        <MegaMenu
-                          title={item.megaMenu.title}
-                          description={item.megaMenu.description}
-                          image={item.megaMenu.image}
-                          items={item.megaMenu.items}
-                        />
-                      )}
-                    </MenuItem>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <Link to="/login">Login</Link>
+            </Button>
+            <Button 
+              asChild 
+              size="sm"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+            >
+              <Link to="/waitlist">Sign Up</Link>
+            </Button>
           </div>
 
-          <div className="bg-background group-data-[state=active]:block lg:group-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
-            <div className="lg:hidden">
-              <ul className="space-y-6 text-base">
+          {/* Mobile menu panel */}
+          {menuState && (
+            <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t">
+              <div className="px-4 pt-2 pb-3 space-y-1">
                 {menuItems.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      to={item.href}
-                      className="text-muted-foreground hover:text-accent-foreground block duration-150"
-                    >
-                      <span>{item.name}</span>
-                    </Link>
-                  </li>
+                  <Link
+                    key={index}
+                    to={item.href}
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    onClick={() => setMenuState(false)}
+                  >
+                    {item.name}
+                  </Link>
                 ))}
-              </ul>
+                <div className="mt-4 flex flex-col space-y-2 px-3">
+                  <Button 
+                    asChild 
+                    variant="ghost" 
+                    className="w-full justify-center font-semibold"
+                  >
+                    <Link to="/login">Login</Link>
+                  </Button>
+                  <Button 
+                    asChild 
+                    className="w-full justify-center bg-gradient-to-r from-orange-500 to-orange-600 font-semibold"
+                  >
+                    <Link to="/waitlist">Sign Up</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
-            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-              <Button asChild variant="outline" size="sm">
-                <Link to="/login">
-                  <span>Login</span>
-                </Link>
-              </Button>
-              <Button asChild size="sm">
-                <Link to="/waitlist">
-                  <span>Sign Up</span>
-                </Link>
-              </Button>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </nav>

@@ -14,23 +14,22 @@ const FeatureBentoGrid = () => {
         <div className="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Ticketing - Spans 2 columns */}
           <div
-            className="lg:col-span-2 rounded-2xl p-8 border border-blue-100 hover:shadow-xl transition-all duration-300 group"
-            style={{ background: "linear-gradient(180deg, #EFFBFE 0%, #CAF0F8 100%)" }}
+            className="lg:col-span-2 rounded-3xl p-8 border border-blue-100 bg-gradient-to-br from-orange-50 via-blue-50 to-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
           >
             <div className="flex flex-col h-full">
               <div className="">
-                <h3 className="text-2xl font-bold text-gray-900 ">Ticketing</h3>
+                <h3 className="text-3xl font-bold text-gray-900 mb-2">Ticketing</h3>
                 <p className="text-gray-600 text-lg leading-relaxed mb-4">
                   Easily collaborate with colleagues to quickly solve complex problems, as well as allow customers to
                   track progress in real time.
                 </p>
               </div>
               <div className="flex flex items-end">
-                <div className="w-full">
+                <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                   <img
                     src={i1}
                     alt="Ticketing details modal showing assignee and team information"
-                    className="w-full h-136 object-cover rounded-lg"
+                    className="w-full h-full object-cover rounded-2xl"
                   />
                 </div>
               </div>
@@ -41,22 +40,21 @@ const FeatureBentoGrid = () => {
           <div className="flex flex-col gap-6">
             {/* Configurable - Top of stack */}
             <div
-              className="rounded-2xl p-6 border border-blue-100 hover:shadow-xl transition-all duration-300 group flex-1"
-              style={{ background: "linear-gradient(180deg, #EFFBFE 0%, #CAF0F8 100%)" }}
+              className="rounded-3xl p-6 border border-blue-100 bg-gradient-to-br from-orange-50 via-blue-50 to-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex-1"
             >
               <div className="flex flex-col h-full">
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Configurable</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Configurable</h3>
                   <p className="text-gray-600 leading-relaxed text-sm">
                     Change language, turn on dark mode, save custom views, and more.
                   </p>
                 </div>
                 <div className="flex-1 flex items-end">
-                  <div className="w-full bg-white rounded-lg p-3 shadow-md border border-gray-200 group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                     <img
                       src={i2}
                       alt="Configuration dropdown menu with various options"
-                      className="w-full h-24 object-cover rounded"
+                      className="w-full h-full object-cover rounded-2xl"
                     />
                   </div>
                 </div>
@@ -65,22 +63,21 @@ const FeatureBentoGrid = () => {
 
             {/* Omnichannel - Bottom of stack */}
             <div
-              className="rounded-2xl p-6 border border-blue-100 hover:shadow-xl transition-all duration-300 group flex-1"
-              style={{ background: "linear-gradient(180deg, #EFFBFE 0%, #CAF0F8 100%)" }}
+              className="rounded-3xl p-6 border border-blue-100 bg-gradient-to-br from-orange-50 via-blue-50 to-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex-1"
             >
               <div className="flex flex-col h-full">
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Omnichannel</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Omnichannel</h3>
                   <p className="text-gray-600 leading-relaxed text-sm">
                     See all your support conversations in one place.
                   </p>
                 </div>
                 <div className="flex-1 flex items-end">
-                  <div className="w-full justify-center ">
+                  <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                     <img
                       src={i3}
                       alt="Social media integration showing various platform icons"
-                      className="w-80% h-48 object-cover rounded"
+                      className="w-full h-full object-cover rounded-2xl"
                     />
                   </div>
                 </div>
@@ -93,23 +90,22 @@ const FeatureBentoGrid = () => {
 
         {/* Multiplayer */}
         <div
-          className="rounded-2xl p-6 border border-blue-100 hover:shadow-xl transition-all duration-300 group"
-          style={{ background: "linear-gradient(180deg, #EFFBFE 0%, #CAF0F8 100%)" }}
+          className="rounded-3xl p-6 border border-blue-100 bg-gradient-to-br from-orange-50 via-blue-50 to-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
         >
           <div className="flex flex-col h-full">
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Multiplayer</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Multiplayer</h3>
               <p className="text-gray-600 leading-relaxed text-sm">
                 Collaborate efficiently with teammates in real time thanks to co-presence indicators, notes, and
                 @mentions.
               </p>
             </div>
             <div className="flex-1 flex items-end">
-              <div className="w-100px">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img
                   src={i4}
                   alt="Multiplayer collaboration interface with user presence"
-                  className="w-100px h-32 object-cover rounded"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
             </div>
@@ -118,23 +114,22 @@ const FeatureBentoGrid = () => {
 
         {/* Lightning fast */}
         <div
-          className="rounded-2xl p-6 border border-blue-100 hover:shadow-xl transition-all duration-300 group"
-          style={{ background: "linear-gradient(180deg, #EFFBFE 0%, #CAF0F8 100%)" }}
+          className="rounded-3xl p-6 border border-blue-100 bg-gradient-to-br from-orange-50 via-blue-50 to-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
         >
           <div className="flex flex-col h-full">
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Lightning fast</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Lightning fast</h3>
               <p className="text-gray-600 leading-relaxed text-sm">
                 Win time back with powerful macros, nonexistent load times, and simple shortcuts that put your entire
                 Inbox a Cmd+K away.
               </p>
             </div>
             <div className="flex-1 flex items-end">
-              <div className="w-full">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img
                   src={i5}
                   alt="Quick actions search interface with shortcuts"
-                  className="w-full h-32 object-cover rounded"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
             </div>
@@ -143,22 +138,21 @@ const FeatureBentoGrid = () => {
 
         {/* Team management */}
         <div
-          className="rounded-2xl p-6 border border-blue-100 hover:shadow-xl transition-all duration-300 group"
-          style={{ background: "linear-gradient(180deg, #EFFBFE 0%, #CAF0F8 100%)" }}
+          className="rounded-3xl p-6 border border-blue-100 bg-gradient-to-br from-orange-50 via-blue-50 to-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
         >
           <div className="flex flex-col h-full">
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Team management</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Team management</h3>
               <p className="text-gray-600 leading-relaxed text-sm">
                 Get more done by optimizing operations with live dashboards, reporting, work management tools, and more.
               </p>
             </div>
             <div className="flex-1 flex items-end">
-              <div className="w-full">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img
                   src={i6}
                   alt="Team dashboard with metrics and analytics"
-                  className="w-full h-32 object-cover rounded"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
             </div>

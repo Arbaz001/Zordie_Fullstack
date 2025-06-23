@@ -93,18 +93,20 @@ export default function AIBenefitsLanding() {
             return (
               <div
                 key={index}
-                className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-gradient-to-br from-blue-400/90 via-blue-200/80 to-white rounded-2xl p-8 text-gray-900 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
               >
-                <IconComponent className="w-8 h-8 mb-4" />
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <IconComponent className="w-7 h-7 text-blue-500" />
+                </div>
                 <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
-                <p className="text-blue-100 leading-relaxed">{benefit.description}</p>
+                <p className="text-gray-700 leading-relaxed">{benefit.description}</p>
               </div>
             )
           })}
         </div>
 
         {/* Marquee Card */}
-        <div className="bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl p-8 md:p-12 overflow-hidden relative">
+        <div className="bg-gradient-to-br from-blue-400 via-orange-100 to-white rounded-3xl p-8 md:p-12 overflow-hidden relative shadow-xl">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">
               Ease your life with powerful features using Zordie AI
@@ -120,10 +122,10 @@ export default function AIBenefitsLanding() {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mx-3 whitespace-nowrap"
+                    className="flex items-center gap-3 bg-white/40 backdrop-blur-md rounded-full px-6 py-3 mx-3 whitespace-nowrap shadow group hover:bg-white/60 transition-colors duration-200"
                   >
-                    <IconComponent className="w-5 h-5 text-white" />
-                    <span className="text-white font-medium">{feature.text}</span>
+                    <IconComponent className="w-5 h-5 text-blue-600" />
+                    <span className="text-blue-900 font-medium">{feature.text}</span>
                   </div>
                 )
               })}
@@ -136,10 +138,10 @@ export default function AIBenefitsLanding() {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mx-3 whitespace-nowrap"
+                    className="flex items-center gap-3 bg-white/40 backdrop-blur-md rounded-full px-6 py-3 mx-3 whitespace-nowrap shadow group hover:bg-white/60 transition-colors duration-200"
                   >
-                    <IconComponent className="w-5 h-5 text-white" />
-                    <span className="text-white font-medium">{feature.text}</span>
+                    <IconComponent className="w-5 h-5 text-blue-600" />
+                    <span className="text-blue-900 font-medium">{feature.text}</span>
                   </div>
                 )
               })}
@@ -148,7 +150,7 @@ export default function AIBenefitsLanding() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes marquee {
           0% {
             transform: translateX(0%);

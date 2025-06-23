@@ -47,12 +47,12 @@ const AnimatedAIChat = () => {
 
   return (
     <div className="bg-gray-900 border-0 p-6 rounded-2xl shadow-2xl">
-      <div className="flex items-center justify-center mb-6">
+      <div className="flex items-center justify-center mb-4">
         <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center animate-pulse">
           <Brain className="w-8 h-8 text-white animate-bounce" />
         </div>
       </div>
-      <div className="text-center mb-6">
+      <div className="text-center mb-2">
         <h3 className="text-white text-lg font-semibold mb-2">AI Assistant</h3>
         <div className="text-gray-400 text-sm h-12 flex items-center justify-center">
           {isTyping ? (
@@ -508,7 +508,7 @@ export default function PrimeFeature() {
 
   return (
     <div
-      className="min-h-screen w-full"
+      className="min-h-screen w-full rounded-3xl"
       style={{
         background:
           "linear-gradient(180deg, #000000 0.7207372167088965%, rgba(31, 145, 118, 1) 40.360349363034906%, rgb(43, 204, 166) 63.42344541807432%, rgb(35, 85, 235) 80.3603644843574%, rgb(201, 82, 8) 100%)",

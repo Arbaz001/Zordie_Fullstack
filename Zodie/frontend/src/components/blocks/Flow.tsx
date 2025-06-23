@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-
 import { TrendingUp, Users, Lightbulb } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Flow() {
   const [activeTab, setActiveTab] = useState("automate-tasks")
@@ -39,14 +39,14 @@ export default function Flow() {
   const activeTabData = tabs.find((tab) => tab.id === activeTab)
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 ">
+    <section className="w-full py-4 md:py-6 lg:py-8 rounded-3xl">
       <div className="container px-4 md:px-6 mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center px-4 py-2 bg-black text-white rounded-full text-sm font-medium mb-6">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center px-4 py-2 bg-black text-white rounded-full text-sm font-medium mb-6 shadow-md">
             Benefits
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-700 via-orange-500 to-pink-500 bg-clip-text text-transparent drop-shadow-md">
             How It Works<span className="text-blue-600">?</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -58,48 +58,77 @@ export default function Flow() {
         {/* Tab Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {tabs.map((tab) => (
-            <button
+            <motion.button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.98 }}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 shadow-sm ${
                 activeTab === tab.id
-                  ? "bg-black text-white shadow-lg"
+                  ? "bg-gradient-to-r from-blue-600 to-orange-400 text-white shadow-lg scale-105"
                   : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
               }`}
             >
               {tab.label}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         {/* Content Box */}
-        {activeTabData && (
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-black">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* Left Content */}
-              <div className="space-y-6">
-                <div className="flex gap-4 flex-col items-stretch">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center shadow-lg">
-                    <activeTabData.icon className="w-8 h-8 text-white" />
+        <AnimatePresence mode="wait" initial={false}>
+          {activeTabData && (
+            <motion.div
+              key={activeTabData.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
+              className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-black/10 backdrop-blur-md"
+            >
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+                {/* Left Content */}
+                <div className="space-y-6">
+                  <div className="flex gap-4 flex-col items-stretch">
+                    <motion.div
+                      className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center shadow-lg"
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                    >
+                      <activeTabData.icon className="w-8 h-8 text-white" />
+                    </motion.div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                      {activeTabData.title}
+                    </h3>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{activeTabData.title}</h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">{activeTabData.description}</p>
                 </div>
-                <p className="text-lg text-gray-600 leading-relaxed">{activeTabData.description}</p>
-              </div>
 
-              {/* Right Image */}
-              <div className="relative w-full h-full min-h-[300px]">
-                <div className="w-full h-full rounded-2xl bg-gray-900 overflow-hidden">
-                  <img
-                    src={activeTabData.image || "/placeholder.svg"}
-                    alt={activeTabData.title}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+                {/* Right Image */}
+                <motion.div
+                  className="relative w-full h-full min-h-[300px]"
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.03 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="w-full h-full rounded-3xl bg-gray-900 overflow-hidden shadow-xl flex items-center justify-center">
+                    <motion.img
+                      key={activeTabData.image}
+                      src={activeTabData.image || "/placeholder.svg"}
+                      alt={activeTabData.title}
+                      className="w-full h-full object-cover max-h-[400px]"
+                      style={{ aspectRatio: '1.5/1', objectPosition: 'center' }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   )

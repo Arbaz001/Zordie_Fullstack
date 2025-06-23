@@ -41,86 +41,80 @@ export function HeroSection() {
         <>
             <HeroHeader />
             <main className="overflow-hidden">
-                <section>
-                    <div className="relative pt-12 pb-4"> {/* Reduced pt-24 to pt-12 and pb-8 to pb-4 */}
-                        <div className="mx-auto max-w-5xl px-6">
-                            <div className="sm:mx-auto lg:mr-auto">
-                                <AnimatedGroup
-                                    variants={{
-                                        container: {
-                                            visible: {
-                                                transition: {
-                                                    staggerChildren: 0.05,
-                                                    delayChildren: 0.75,
-                                                },
+                <section className="relative min-h-[90vh] flex items-center">
+                    <div className="absolute inset-0 bg-gradient-to-b from-orange-50/90 to-white/50 -z-10" />
+                    
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+                        <div className="max-w-5xl mx-auto">
+                            <AnimatedGroup
+                                variants={{
+                                    container: {
+                                        visible: {
+                                            transition: {
+                                                staggerChildren: 0.05,
+                                                delayChildren: 0.75,
                                             },
                                         },
-                                        ...transitionVariants,
-                                    }}
-                                >
-                                    <h1
-                                        className="max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-8"> {/* Reduced lg:mt-16 to lg:mt-8 */}
-                                        Hire Smarter, Faster, and Fairer —  <span className='text-primary'>Zordie AI</span>
+                                    },
+                                    ...transitionVariants,
+                                }}
+                            >
+                                <div className="text-center sm:text-left">
+                                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6">
+                                        Hire Smarter, Faster,{" "}
+                                        <br className="hidden sm:block" />
+                                        and Fairer —{" "}
+                                        <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                                            Zordie AI
+                                        </span>
                                     </h1>
-                                    <p
-                                        className="mt-4 max-w-2xl text-pretty text-lg"> {/* Reduced mt-8 to mt-4 */}
-                                       From screening and interviews to onboarding and workforce planning, Zordie AI empowers your team with advanced, autonomous agents that make hiring faster, fairer, and future-ready.
+                                    <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-3xl leading-relaxed">
+                                        From screening and interviews to onboarding and workforce planning, 
+                                        Zordie AI empowers your team with advanced, autonomous agents that 
+                                        make hiring faster, fairer, and future-ready.
                                     </p>
-                                    <div className="mt-8 flex items-center gap-2"> {/* Reduced mt-12 to mt-8 */}
-                                        <div
-                                            key={1}
-                                            className="bg-foreground/10 rounded-[14px] border p-0.5">
-                                            <Button
-                                                asChild
-                                                size="lg"
-                                                className="rounded-xl px-5 text-base">
-                                                <Link to="#link">
-                                                    <span className="text-nowrap">Start Now</span>
-                                                </Link>
-                                            </Button>
-                                        </div>
-                                        {/* <Button
-                                            key={2}
+                                    <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center sm:justify-start">
+                                        <Button
                                             asChild
                                             size="lg"
-                                            variant="ghost"
-                                            className="h-[42px] rounded-xl px-5 text-base">
+                                            className="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-semibold rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                                        >
                                             <Link to="#link">
-                                                <span className="text-nowrap">Request Early Access</span>
+                                                Start Now
                                             </Link>
-                                        </Button> */}
-                                        <MovingBorderDemo></MovingBorderDemo>
+                                        </Button>
+                                        <MovingBorderDemo />
                                     </div>
-                                </AnimatedGroup>
-                            </div>
-                        </div>
-                        <AnimatedGroup
-                            variants={{
-                                container: {
-                                    visible: {
-                                        transition: {
-                                            staggerChildren: 0.05,
-                                            delayChildren: 0.75,
+                                </div>
+                            </AnimatedGroup>
+
+                            <AnimatedGroup
+                                variants={{
+                                    container: {
+                                        visible: {
+                                            transition: {
+                                                staggerChildren: 0.05,
+                                                delayChildren: 0.75,
+                                            },
                                         },
                                     },
-                                },
-                                ...transitionVariants,
-                            }}>
-                            <div className="relative  overflow-hidden ">
-            
-                                <div className=" relative mx-auto max-w-5xl ">
+                                    ...transitionVariants,
+                                }}
+                            >
+                                <div className="mt-16 sm:mt-24">
                                     <ScrollAnimationDemo />
                                 </div>
-                            </div>
-                        </AnimatedGroup>
+                            </AnimatedGroup>
+                        </div>
                     </div>
-                    
                 </section>
-                <LogoCloud></LogoCloud>
+                <LogoCloud />
             </main>
         </>
     )
 }
+
+export default HeroSection;
 
 
 const menuItems = [
@@ -228,7 +222,7 @@ const LogoCloud = () => {
             <div className="group relative m-auto max-w-6xl px-6">
                 <div className="flex flex-col items-center md:flex-row">
                     <div className="inline md:max-w-44 md:border-r md:pr-6">
-                        <p className="text-end text-sm">Powering the best HR Ecosystem</p>
+                        <p className="text-end text-sm font-bold">Powering the best HR Ecosystem</p>
                     </div>
                     <div className="relative py-6 md:w-[calc(100%-11rem)]">
                         <InfiniteSlider

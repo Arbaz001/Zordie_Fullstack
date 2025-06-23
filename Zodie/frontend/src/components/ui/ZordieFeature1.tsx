@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Target, Clock, TrendingUp, Zap, Settings } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const features = [
   {
@@ -49,7 +50,7 @@ export default function ZordieFeatures1() {
   const currentFeature = features.find((f) => f.id === activeFeature) || features[0]
 
   return (
-    <section className="min-h-screen bg-gray-50 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8"> 
+    <section className="min-h-screen bg-gray-50 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 rounded-3xl"> 
       <div className="max-w-7xl mx-auto">
         <Badge variant="outline" className="mb-3 sm:mb-4 text-xs sm:text-sm font-medium">
           ✨ Features
@@ -67,48 +68,84 @@ export default function ZordieFeatures1() {
             const isActive = activeFeature === feature.id
 
             return (
-              <Card
+              <motion.div
                 key={feature.id}
-                className={`p-4 sm:p-6 cursor-pointer transition-all duration-200 border-2 ${
-                  isActive
-                    ? "border-blue-200 bg-blue-50/50 shadow-sm"
-                    : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
-                }`}
-                onClick={() => setActiveFeature(feature.id)}
+                layout
+                whileHover={{ scale: 1.03, boxShadow: "0 4px 24px 0 rgba(0,0,0,0.07)" }}
+                animate={isActive ? { scale: 1.04, boxShadow: "0 6px 32px 0 rgba(59,130,246,0.10)" } : { scale: 1, boxShadow: "0 1px 4px 0 rgba(0,0,0,0.03)" }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className={`p-0 rounded-2xl`}
               >
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className={`p-2 rounded-lg ${isActive ? "bg-blue-100" : "bg-gray-100"}`}>
-                    <IconComponent className={`w-4 h-4 sm:w-5 sm:h-5 ${isActive ? "text-blue-600" : "text-gray-600"}`} />
+                <Card
+                  className={`p-4 sm:p-6 cursor-pointer transition-all duration-200 border-2 ${
+                    isActive
+                      ? "border-blue-200 bg-blue-50/50 shadow-sm"
+                      : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
+                  }`}
+                  onClick={() => setActiveFeature(feature.id)}
+                >
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <motion.div
+                      className={`p-2 rounded-lg ${isActive ? "bg-blue-100" : "bg-gray-100"}`}
+                      layout
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    >
+                      <IconComponent className={`w-4 h-4 sm:w-5 sm:h-5 ${isActive ? "text-blue-600" : "text-gray-600"}`} />
+                    </motion.div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className={`text-base sm:text-lg font-semibold mb-1 sm:mb-2 truncate ${isActive ? "text-blue-900" : "text-gray-900"}`}>
+                        {feature.title}
+                      </h3>
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.p
+                            key="desc"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="text-gray-600 text-xs sm:text-sm leading-relaxed line-clamp-2"
+                          >
+                            {feature.description}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className={`text-base sm:text-lg font-semibold mb-1 sm:mb-2 truncate ${isActive ? "text-blue-900" : "text-gray-900"}`}>
-                      {feature.title}
-                    </h3>
-                    {isActive && <p className="text-gray-600 text-xs sm:text-sm leading-relaxed line-clamp-2">{feature.description}</p>}
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </motion.div>
             )
           })}
 
-          <div className="pt-4 sm:pt-6">
-            <Button className="w-full sm:w-auto bg-black hover:bg-gray-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base">
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="pt-4 sm:pt-6"
+          >
+            <Button className="w-full sm:w-auto bg-black hover:bg-gray-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base transition-transform">
               Learn more features
             </Button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Right side with dynamic image */}
         <div className="lg:sticky lg:top-8 mt-6 md:mt-0">
           <Card className="p-0 overflow-hidden shadow-lg h-auto w-full">
             <div className="relative w-full h-full">
-              <img
-                src={currentFeature.image || "/placeholder.svg"}
-                alt={currentFeature.title}
-                className="w-full h-auto max-w-full object-contain transition-opacity duration-300"
-                crossOrigin="anonymous"
-                loading="lazy"
-              />
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.img
+                  key={currentFeature.image}
+                  src={currentFeature.image || "/placeholder.svg"}
+                  alt={currentFeature.title}
+                  className="w-full h-auto max-w-full object-contain transition-opacity duration-300"
+                  crossOrigin="anonymous"
+                  loading="lazy"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.01 }}
+                  transition={{ duration: 0.4 }}
+                />
+              </AnimatePresence>
             </div>
           </Card>
         </div>
